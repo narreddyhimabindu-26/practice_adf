@@ -1,0 +1,72 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfdevecommerce"
+		},
+		"LS_ADLS_PARQ_accountKey": {
+			"value": ""
+		},
+		"LS_CSV_ADLS_accountKey": {
+			"value": ""
+		},
+		"LS_CSV_PARQ_accountKey": {
+			"value": ""
+		},
+		"LS_MULT_accountKey": {
+			"value": ""
+		},
+		"LS_MULTI_CSV_accountKey": {
+			"value": ""
+		},
+		"LS_MULT_CSV_accountKey": {
+			"value": ""
+		},
+		"LS_MULT_CSV_ADLS_accountKey": {
+			"value": ""
+		},
+		"LS_MULT_PARQ_ADLS_accountKey": {
+			"value": ""
+		},
+		"LS_SQL_password": {
+			"value": ""
+		},
+		"LS_ADLS_PARQ_properties_typeProperties_url": {
+			"value": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_CSV_ADLS_properties_typeProperties_url": {
+			"value": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_CSV_PARQ_properties_typeProperties_url": {
+			"value": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULT_properties_typeProperties_url": {
+			"value": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULTI_CSV_properties_typeProperties_url": {
+			"value": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULT_CSV_properties_typeProperties_url": {
+			"value": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULT_CSV_ADLS_properties_typeProperties_url": {
+			"value": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULT_PARQ_ADLS_properties_typeProperties_url": {
+			"value": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_RESTAPI_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"value": "LAPTOP-ML3E02N5"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"value": "AdventureWorks2022"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"value": "LAPTOP-ML3E02N5\\venkat"
+		}
+	}
+}

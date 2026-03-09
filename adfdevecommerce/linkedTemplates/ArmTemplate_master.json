@@ -1,0 +1,189 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfdevecommerce"
+		},
+		"LS_ADLS_PARQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PARQ'"
+		},
+		"LS_CSV_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_ADLS'"
+		},
+		"LS_CSV_PARQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_PARQ'"
+		},
+		"LS_MULT_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MULT'"
+		},
+		"LS_MULTI_CSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MULTI_CSV'"
+		},
+		"LS_MULT_CSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MULT_CSV'"
+		},
+		"LS_MULT_CSV_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MULT_CSV_ADLS'"
+		},
+		"LS_MULT_PARQ_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MULT_PARQ_ADLS'"
+		},
+		"LS_SQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL'"
+		},
+		"LS_ADLS_PARQ_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_CSV_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_CSV_PARQ_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULT_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULTI_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULT_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULT_CSV_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_MULT_PARQ_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_RESTAPI_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2022"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfdevecommerce_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_ADLS_PARQ_accountKey": {
+						"value": "[parameters('LS_ADLS_PARQ_accountKey')]"
+					},
+					"LS_CSV_ADLS_accountKey": {
+						"value": "[parameters('LS_CSV_ADLS_accountKey')]"
+					},
+					"LS_CSV_PARQ_accountKey": {
+						"value": "[parameters('LS_CSV_PARQ_accountKey')]"
+					},
+					"LS_MULT_accountKey": {
+						"value": "[parameters('LS_MULT_accountKey')]"
+					},
+					"LS_MULTI_CSV_accountKey": {
+						"value": "[parameters('LS_MULTI_CSV_accountKey')]"
+					},
+					"LS_MULT_CSV_accountKey": {
+						"value": "[parameters('LS_MULT_CSV_accountKey')]"
+					},
+					"LS_MULT_CSV_ADLS_accountKey": {
+						"value": "[parameters('LS_MULT_CSV_ADLS_accountKey')]"
+					},
+					"LS_MULT_PARQ_ADLS_accountKey": {
+						"value": "[parameters('LS_MULT_PARQ_ADLS_accountKey')]"
+					},
+					"LS_SQL_password": {
+						"value": "[parameters('LS_SQL_password')]"
+					},
+					"LS_ADLS_PARQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_PARQ_properties_typeProperties_url')]"
+					},
+					"LS_CSV_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_CSV_PARQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_PARQ_properties_typeProperties_url')]"
+					},
+					"LS_MULT_properties_typeProperties_url": {
+						"value": "[parameters('LS_MULT_properties_typeProperties_url')]"
+					},
+					"LS_MULTI_CSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_MULTI_CSV_properties_typeProperties_url')]"
+					},
+					"LS_MULT_CSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_MULT_CSV_properties_typeProperties_url')]"
+					},
+					"LS_MULT_CSV_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_MULT_CSV_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_MULT_PARQ_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_MULT_PARQ_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_RESTAPI_properties_typeProperties_url": {
+						"value": "[parameters('LS_RESTAPI_properties_typeProperties_url')]"
+					},
+					"LS_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_server')]"
+					},
+					"LS_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_database')]"
+					},
+					"LS_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
