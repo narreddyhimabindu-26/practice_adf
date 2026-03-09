@@ -482,6 +482,46 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "DLT_CSV_ONPREM",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "CPY_MULT_CSV_ADLS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "DS_CSV_MULT",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "LS_MULT_CSV_ADLS",
+									"type": "LinkedServiceReference"
+								},
+								"path": "inputmultiplecsv"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AzureBlobFSReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
 					}
 				],
 				"policy": {
@@ -492,7 +532,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_CSV_MULT')]",
-				"[concat(variables('factoryId'), '/datasets/DS_MULT_CSV_ADLS')]"
+				"[concat(variables('factoryId'), '/datasets/DS_MULT_CSV_ADLS')]",
+				"[concat(variables('factoryId'), '/linkedServices/LS_MULT_CSV_ADLS')]"
 			]
 		},
 		{
