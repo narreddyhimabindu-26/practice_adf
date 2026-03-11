@@ -32,6 +32,9 @@
 		"LS_SQL_password": {
 			"value": ""
 		},
+		"SqlServer1_password": {
+			"value": ""
+		},
 		"LS_ADLS_PARQ_properties_typeProperties_url": {
 			"value": "https://devadlsecommerce.dfs.core.windows.net"
 		},
@@ -66,6 +69,15 @@
 			"value": "AdventureWorks2022"
 		},
 		"LS_SQL_properties_typeProperties_userName": {
+			"value": "LAPTOP-ML3E02N5\\venkat"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "LAPTOP-ML3E02N5"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
 			"value": "LAPTOP-ML3E02N5\\venkat"
 		},
 		"containerUri": {
