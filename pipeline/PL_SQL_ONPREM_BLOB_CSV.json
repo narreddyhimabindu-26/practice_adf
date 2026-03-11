@@ -173,10 +173,6 @@
 							"type": "String"
 						},
 						"TableName": {
-							"value": {
-								"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
-								"type": "Expression"
-							},
 							"type": "String"
 						}
 					}
