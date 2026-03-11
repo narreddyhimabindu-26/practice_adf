@@ -1,0 +1,22 @@
+{
+	"name": "DS_BLOB_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BLOB_CSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "logdatatocsvfromsql"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
