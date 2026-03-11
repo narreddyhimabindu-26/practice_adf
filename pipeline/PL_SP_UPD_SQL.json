@@ -1,0 +1,42 @@
+{
+	"name": "PL_SP_UPD_SQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "SP_INSERT_CUST_INFO",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[InsertCustomer]",
+					"storedProcedureParameters": {
+						"CustomerID": {
+							"value": "2346",
+							"type": "Int32"
+						},
+						"FirstName": {
+							"value": "Bindu",
+							"type": "String"
+						},
+						"LastName": {
+							"value": "N",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "SqlServer1",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
