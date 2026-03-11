@@ -6,12 +6,12 @@
 		"type": "SqlServer",
 		"typeProperties": {
 			"server": "LAPTOP-ML3E02N5",
-			"database": "AdventureWorks2022",
+			"database": "master",
 			"encrypt": "mandatory",
 			"trustServerCertificate": true,
 			"authenticationType": "Windows",
 			"userName": "LAPTOP-ML3E02N5\\venkat",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4ZDRlMmFjNy0xZDE1LTQwM2QtOTU3OS1iZDgyYWUzYTY2MmMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI0YmYzNGYwMC01ZjM4LTRjNTYtYjM2MS04NWUwYzBkMjMxZjEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "SelfhostedintegrationRuntime1",
