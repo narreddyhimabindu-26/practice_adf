@@ -9,9 +9,9 @@
 			"database": "master",
 			"encrypt": "mandatory",
 			"trustServerCertificate": true,
-			"authenticationType": "SQL",
+			"authenticationType": "Windows",
 			"userName": "LAPTOP-ML3E02N5\\venkat",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5OGZjMjA2Zi0xYjI4LTRhM2ItYTg1Zi0xOGEyNWQxZjEyYWIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1M2E3MTI0Yy03ZDVjLTQ0ODQtYjZmNS1iN2QyZWIxNDc3MGMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "SelfhostedintegrationRuntime1",
