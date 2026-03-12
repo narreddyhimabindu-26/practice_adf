@@ -124,7 +124,10 @@
 				"outputs": [
 					{
 						"referenceName": "DS_BLOB_CSV",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"schemaname": "dbo"
+						}
 					}
 				]
 			},
