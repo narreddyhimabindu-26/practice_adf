@@ -170,7 +170,7 @@
 						},
 						"tablename": {
 							"value": {
-								"value": "\naudit.copylog",
+								"value": "@concat(pipeline().parameters.schemaname,'.',pipeline().parameters.tablename)",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -205,33 +205,33 @@
 					"storedProcedureName": "[audit].[loadstatus]",
 					"storedProcedureParameters": {
 						"dataRead": {
-							"value": "1",
+							"value": "@activity('copy_data_sql_csv').output.rowsCopied",
 							"type": "String"
 						},
 						"errorId": {
 							"value": {
-								"value": "1234",
+								"value": "@activity('copy_data_sql_csv').output.errors[0].code",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"errormessage": {
 							"value": {
-								"value": "no error\n",
+								"value": "@activity('copy_data_sql_csv').output.errors[0].message\n",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"loadstatus": {
 							"value": {
-								"value": "fail\n",
+								"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n\n",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"tableName": {
 							"value": {
-								"value": "audit.copylog\n",
+								"value": "@concat(pipeline().parameters.schemaname,'.',pipeline().parameters.tablename)\n",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -244,6 +244,16 @@
 				}
 			}
 		],
+		"parameters": {
+			"schemaname": {
+				"type": "string",
+				"defaultValue": "audit"
+			},
+			"tablename": {
+				"type": "string",
+				"defaultValue": "copylog"
+			}
+		},
 		"annotations": []
 	}
 }
