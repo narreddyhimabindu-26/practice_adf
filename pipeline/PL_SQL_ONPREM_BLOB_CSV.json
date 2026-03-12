@@ -150,7 +150,7 @@
 					"storedProcedureName": "[audit].[loadstatus]",
 					"storedProcedureParameters": {
 						"dataread": {
-							"value": "",
+							"value": "@activity('copy_data_sql_csv').output.dataread\n",
 							"type": "String"
 						},
 						"errorid": {
@@ -162,12 +162,64 @@
 							"type": "String"
 						},
 						"loadstatus": {
-							"value": "",
+							"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
 							"type": "String"
 						},
 						"tablename": {
 							"value": {
-								"value": "@concat(pipeline().parameters.tablename)\n",
+								"value": "\n@activity('CPY_ONPREM_SQL').output.tablename",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SP_SQL_ONPREM",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_LOG_FAIL",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPY_ONPREM_SQL",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[audit].[loadstatus]",
+					"storedProcedureParameters": {
+						"dataread": {
+							"value": "@activity('copy_data_sql_csv').output.dataread",
+							"type": "String"
+						},
+						"errorid": {
+							"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+							"type": "String"
+						},
+						"errormessage": {
+							"value": "@activity('copy_data_sql_csv').output.errors[0].message\n",
+							"type": "String"
+						},
+						"loadstatus": {
+							"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+							"type": "String"
+						},
+						"TableName": {
+							"value": {
+								"value": "activity('copy_data_sql_csv').output.TableName",
 								"type": "Expression"
 							},
 							"type": "String"
