@@ -150,10 +150,7 @@
 					"storedProcedureName": "[audit].[loadstatus]",
 					"storedProcedureParameters": {
 						"dataread": {
-							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').outputactivity('CPY_ONPREM_SQL').output.dataRead",
-								"type": "Expression"
-							},
+							"value": "1",
 							"type": "String"
 						},
 						"errorid": {
@@ -166,7 +163,7 @@
 						},
 						"loadstatus": {
 							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').outputactivity('CPY_ONPREM_SQL').output.executionDetails[0].status",
+								"value": "success",
 								"type": "Expression"
 							},
 							"type": "String"
