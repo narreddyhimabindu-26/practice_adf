@@ -151,7 +151,7 @@
 					"storedProcedureParameters": {
 						"dataread": {
 							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').outputactivity('CPY_ONPREM_SQL').output.dataread",
+								"value": "@activity('CPY_ONPREM_SQL').outputactivity('CPY_ONPREM_SQL').output.dataRead",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -173,7 +173,7 @@
 						},
 						"tablename": {
 							"value": {
-								"value": "\n@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
+								"value": "\n@concat(pipeline().parameters.schemaName,'_',pipeline().parameters.tableName)\n",
 								"type": "Expression"
 							},
 							"type": "String"
