@@ -253,11 +253,11 @@
 		"parameters": {
 			"schemaname": {
 				"type": "string",
-				"defaultValue": "dbo"
+				"defaultValue": "audit"
 			},
 			"tablename": {
 				"type": "string",
-				"defaultValue": "audit.copylog"
+				"defaultValue": "copylog"
 			}
 		},
 		"annotations": []
