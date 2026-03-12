@@ -173,7 +173,7 @@
 						},
 						"tablename": {
 							"value": {
-								"value": "\n@concat(pipeline().parameters.schemaName,'_',pipeline().parameters.tableName)\n",
+								"value": "\naudit.copylog",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -234,7 +234,7 @@
 						},
 						"tableName": {
 							"value": {
-								"value": "@concat(pipeline().parameters.schemaName,'_',pipeline().parameters.tableName)\n",
+								"value": "audit.copylog\n",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -247,16 +247,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"schemaName": {
-				"type": "string",
-				"defaultValue": "audit"
-			},
-			"tableName": {
-				"type": "string",
-				"defaultValue": "loadstatus"
-			}
-		},
 		"annotations": []
 	}
 }
