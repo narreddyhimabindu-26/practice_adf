@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CPY_ONPREM_SQL",
+				"name": "copy_data_sql_csv",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -132,7 +132,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "CPY_ONPREM_SQL",
+						"activity": "copy_data_sql_csv",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -150,7 +150,7 @@
 					"storedProcedureName": "[audit].[loadstatus]",
 					"storedProcedureParameters": {
 						"dataread": {
-							"value": "1",
+							"value": "@activity('copy_data_sql_csv').output.rowsCopied",
 							"type": "String"
 						},
 						"errorid": {
@@ -163,7 +163,7 @@
 						},
 						"loadstatus": {
 							"value": {
-								"value": "success",
+								"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -187,7 +187,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "CPY_ONPREM_SQL",
+						"activity": "copy_data_sql_csv",
 						"dependencyConditions": [
 							"Failed"
 						]
