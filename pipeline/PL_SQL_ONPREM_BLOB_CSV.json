@@ -251,11 +251,11 @@
 			}
 		],
 		"parameters": {
-			"schemaname": {
+			"schemaName": {
 				"type": "string",
 				"defaultValue": "audit"
 			},
-			"tablename": {
+			"tableName": {
 				"type": "string",
 				"defaultValue": "copylog"
 			}
