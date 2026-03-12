@@ -253,7 +253,7 @@
 		"parameters": {
 			"schemaname": {
 				"type": "string",
-				"defaultValue": "audit"
+				"defaultValue": "dbo"
 			},
 			"tablename": {
 				"type": "string",
