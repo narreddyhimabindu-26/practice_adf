@@ -151,7 +151,7 @@
 					"storedProcedureParameters": {
 						"dataread": {
 							"value": {
-								"value": "@activity('copy_data_sql_csv').output.dataread\n",
+								"value": "@activity('CPY_ONPREM_SQL').outputactivity('CPY_ONPREM_SQL').output.dataread",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -166,14 +166,14 @@
 						},
 						"loadstatus": {
 							"value": {
-								"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+								"value": "@activity('CPY_ONPREM_SQL').outputactivity('CPY_ONPREM_SQL').output.executionDetails[0].status",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"tablename": {
 							"value": {
-								"value": "\n@activity('CPY_ONPREM_SQL').output.tablename",
+								"value": "\n@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -209,35 +209,35 @@
 					"storedProcedureParameters": {
 						"dataread": {
 							"value": {
-								"value": "@activity('copy_data_sql_csv').output.dataread",
+								"value": "@activity('CPY_ONPREM_SQL').output.dataread",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"errorid": {
 							"value": {
-								"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+								"value": "@activity('CPY_ONPREM_SQL').outputactivity('CPY_ONPREM_SQL').output.errors[0].code",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"errormessage": {
 							"value": {
-								"value": "@activity('copy_data_sql_csv').output.errors[0].message\n",
+								"value": "@activity('CPY_ONPREM_SQL').output.errors[0].message\n",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"loadstatus": {
 							"value": {
-								"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+								"value": "@activity('CPY_ONPREM_SQL').output.executionDetails[0].status\n",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"TableName": {
 							"value": {
-								"value": "activity('copy_data_sql_csv').output.TableName",
+								"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
 								"type": "Expression"
 							},
 							"type": "String"
