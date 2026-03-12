@@ -150,7 +150,10 @@
 					"storedProcedureName": "[audit].[loadstatus]",
 					"storedProcedureParameters": {
 						"dataread": {
-							"value": "@activity('copy_data_sql_csv').output.dataread\n",
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.dataread\n",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"errorid": {
@@ -162,7 +165,10 @@
 							"type": "String"
 						},
 						"loadstatus": {
-							"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"tablename": {
@@ -202,19 +208,31 @@
 					"storedProcedureName": "[audit].[loadstatus]",
 					"storedProcedureParameters": {
 						"dataread": {
-							"value": "@activity('copy_data_sql_csv').output.dataread",
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.dataread",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"errorid": {
-							"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"errormessage": {
-							"value": "@activity('copy_data_sql_csv').output.errors[0].message\n",
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.errors[0].message\n",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"loadstatus": {
-							"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"TableName": {
@@ -232,6 +250,16 @@
 				}
 			}
 		],
+		"parameters": {
+			"schemaname": {
+				"type": "string",
+				"defaultValue": "audit"
+			},
+			"tablename": {
+				"type": "string",
+				"defaultValue": "audit.copylog"
+			}
+		},
 		"annotations": []
 	}
 }
