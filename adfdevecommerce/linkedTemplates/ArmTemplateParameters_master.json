@@ -8,6 +8,12 @@
 		"LS_ADLS_PARQ_accountKey": {
 			"value": ""
 		},
+		"LS_BLOB_CSV_connectionString": {
+			"value": ""
+		},
+		"LS_CPYLOG_ONPREM_SQL_SP_password": {
+			"value": ""
+		},
 		"LS_CSV_ADLS_accountKey": {
 			"value": ""
 		},
@@ -29,7 +35,16 @@
 		"LS_MULT_PARQ_ADLS_accountKey": {
 			"value": ""
 		},
+		"LS_SP_SQL_ONPREM_password": {
+			"value": ""
+		},
 		"LS_SQL_password": {
+			"value": ""
+		},
+		"LS_SQL_CPY_DATA_password": {
+			"value": ""
+		},
+		"LS_SQL_ONPREM_password": {
 			"value": ""
 		},
 		"SqlServer1_password": {
@@ -37,6 +52,15 @@
 		},
 		"LS_ADLS_PARQ_properties_typeProperties_url": {
 			"value": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_server": {
+			"value": "LAPTOP-ML3E02N5"
+		},
+		"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_userName": {
+			"value": "LAPTOP-ML3E02N5\\venkat"
 		},
 		"LS_CSV_ADLS_properties_typeProperties_url": {
 			"value": "https://devadlsecommerce.dfs.core.windows.net"
@@ -62,13 +86,40 @@
 		"LS_RESTAPI_properties_typeProperties_url": {
 			"value": "https://retoolapi.dev/5yDVOt/data"
 		},
+		"LS_SP_SQL_ONPREM_properties_typeProperties_server": {
+			"value": "LAPTOP-ML3E02N5"
+		},
+		"LS_SP_SQL_ONPREM_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_SP_SQL_ONPREM_properties_typeProperties_userName": {
+			"value": "LAPTOP-ML3E02N5\\venkat"
+		},
 		"LS_SQL_properties_typeProperties_server": {
 			"value": "LAPTOP-ML3E02N5"
 		},
 		"LS_SQL_properties_typeProperties_database": {
-			"value": "AdventureWorks2022"
+			"value": "master"
 		},
 		"LS_SQL_properties_typeProperties_userName": {
+			"value": "LAPTOP-ML3E02N5\\venkat"
+		},
+		"LS_SQL_CPY_DATA_properties_typeProperties_server": {
+			"value": "LAPTOP-ML3E02N5"
+		},
+		"LS_SQL_CPY_DATA_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_SQL_CPY_DATA_properties_typeProperties_userName": {
+			"value": "LAPTOP-ML3E02N5\\venkat"
+		},
+		"LS_SQL_ONPREM_properties_typeProperties_server": {
+			"value": "LAPTOP-ML3E02N5"
+		},
+		"LS_SQL_ONPREM_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_SQL_ONPREM_properties_typeProperties_userName": {
 			"value": "LAPTOP-ML3E02N5\\venkat"
 		},
 		"SqlServer1_properties_typeProperties_server": {

@@ -11,6 +11,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PARQ'"
 		},
+		"LS_BLOB_CSV_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BLOB_CSV'"
+		},
+		"LS_CPYLOG_ONPREM_SQL_SP_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_CPYLOG_ONPREM_SQL_SP'"
+		},
 		"LS_CSV_ADLS_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_CSV_ADLS'"
@@ -39,9 +47,21 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_MULT_PARQ_ADLS'"
 		},
+		"LS_SP_SQL_ONPREM_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SP_SQL_ONPREM'"
+		},
 		"LS_SQL_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQL'"
+		},
+		"LS_SQL_CPY_DATA_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_CPY_DATA'"
+		},
+		"LS_SQL_ONPREM_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_ONPREM'"
 		},
 		"SqlServer1_password": {
 			"type": "secureString",
@@ -50,6 +70,18 @@
 		"LS_ADLS_PARQ_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net"
+		},
+		"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5"
+		},
+		"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
 		},
 		"LS_CSV_ADLS_properties_typeProperties_url": {
 			"type": "string",
@@ -83,15 +115,51 @@
 			"type": "string",
 			"defaultValue": "https://retoolapi.dev/5yDVOt/data"
 		},
+		"LS_SP_SQL_ONPREM_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5"
+		},
+		"LS_SP_SQL_ONPREM_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SP_SQL_ONPREM_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
+		},
 		"LS_SQL_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "LAPTOP-ML3E02N5"
 		},
 		"LS_SQL_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "AdventureWorks2022"
+			"defaultValue": "master"
 		},
 		"LS_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
+		},
+		"LS_SQL_CPY_DATA_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5"
+		},
+		"LS_SQL_CPY_DATA_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SQL_CPY_DATA_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
+		},
+		"LS_SQL_ONPREM_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5"
+		},
+		"LS_SQL_ONPREM_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SQL_ONPREM_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
 		},
@@ -137,6 +205,9 @@
 					"LS_ADLS_PARQ_accountKey": {
 						"value": "[parameters('LS_ADLS_PARQ_accountKey')]"
 					},
+					"LS_BLOB_CSV_connectionString": {
+						"value": "[parameters('LS_BLOB_CSV_connectionString')]"
+					},
 					"LS_CSV_ADLS_accountKey": {
 						"value": "[parameters('LS_CSV_ADLS_accountKey')]"
 					},
@@ -158,11 +229,14 @@
 					"LS_MULT_PARQ_ADLS_accountKey": {
 						"value": "[parameters('LS_MULT_PARQ_ADLS_accountKey')]"
 					},
+					"LS_CPYLOG_ONPREM_SQL_SP_password": {
+						"value": "[parameters('LS_CPYLOG_ONPREM_SQL_SP_password')]"
+					},
+					"LS_SP_SQL_ONPREM_password": {
+						"value": "[parameters('LS_SP_SQL_ONPREM_password')]"
+					},
 					"LS_SQL_password": {
 						"value": "[parameters('LS_SQL_password')]"
-					},
-					"SqlServer1_password": {
-						"value": "[parameters('SqlServer1_password')]"
 					},
 					"LS_ADLS_PARQ_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLS_PARQ_properties_typeProperties_url')]"
@@ -191,6 +265,24 @@
 					"LS_RESTAPI_properties_typeProperties_url": {
 						"value": "[parameters('LS_RESTAPI_properties_typeProperties_url')]"
 					},
+					"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_server": {
+						"value": "[parameters('LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_server')]"
+					},
+					"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_database": {
+						"value": "[parameters('LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_database')]"
+					},
+					"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_userName": {
+						"value": "[parameters('LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_userName')]"
+					},
+					"LS_SP_SQL_ONPREM_properties_typeProperties_server": {
+						"value": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_server')]"
+					},
+					"LS_SP_SQL_ONPREM_properties_typeProperties_database": {
+						"value": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_database')]"
+					},
+					"LS_SP_SQL_ONPREM_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_userName')]"
+					},
 					"LS_SQL_properties_typeProperties_server": {
 						"value": "[parameters('LS_SQL_properties_typeProperties_server')]"
 					},
@@ -199,15 +291,6 @@
 					},
 					"LS_SQL_properties_typeProperties_userName": {
 						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
-					},
-					"SqlServer1_properties_typeProperties_server": {
-						"value": "[parameters('SqlServer1_properties_typeProperties_server')]"
-					},
-					"SqlServer1_properties_typeProperties_database": {
-						"value": "[parameters('SqlServer1_properties_typeProperties_database')]"
-					},
-					"SqlServer1_properties_typeProperties_userName": {
-						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -226,6 +309,42 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"LS_SQL_CPY_DATA_password": {
+						"value": "[parameters('LS_SQL_CPY_DATA_password')]"
+					},
+					"LS_SQL_ONPREM_password": {
+						"value": "[parameters('LS_SQL_ONPREM_password')]"
+					},
+					"SqlServer1_password": {
+						"value": "[parameters('SqlServer1_password')]"
+					},
+					"LS_SQL_CPY_DATA_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_CPY_DATA_properties_typeProperties_server')]"
+					},
+					"LS_SQL_CPY_DATA_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_CPY_DATA_properties_typeProperties_database')]"
+					},
+					"LS_SQL_CPY_DATA_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_CPY_DATA_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_ONPREM_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_ONPREM_properties_typeProperties_server')]"
+					},
+					"LS_SQL_ONPREM_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_ONPREM_properties_typeProperties_database')]"
+					},
+					"LS_SQL_ONPREM_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_ONPREM_properties_typeProperties_userName')]"
+					},
+					"SqlServer1_properties_typeProperties_server": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_server')]"
+					},
+					"SqlServer1_properties_typeProperties_database": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_database')]"
+					},
+					"SqlServer1_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"
 					}
 				}
 			},
