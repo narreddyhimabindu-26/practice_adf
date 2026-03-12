@@ -207,14 +207,14 @@
 				"typeProperties": {
 					"storedProcedureName": "[audit].[loadstatus]",
 					"storedProcedureParameters": {
-						"dataread": {
+						"dataRead": {
 							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').output.dataread",
+								"value": "@activity('CPY_ONPREM_SQL').output.dataRead",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
-						"errorid": {
+						"errorId": {
 							"value": {
 								"value": "@activity('CPY_ONPREM_SQL').outputactivity('CPY_ONPREM_SQL').output.errors[0].code",
 								"type": "Expression"
@@ -235,9 +235,9 @@
 							},
 							"type": "String"
 						},
-						"TableName": {
+						"tableName": {
 							"value": {
-								"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
+								"value": "@concat(pipeline().parameters.schemaName,'_',pipeline().parameters.tableName)\n",
 								"type": "Expression"
 							},
 							"type": "String"
