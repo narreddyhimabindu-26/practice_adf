@@ -208,29 +208,26 @@
 					"storedProcedureName": "[audit].[loadstatus]",
 					"storedProcedureParameters": {
 						"dataRead": {
-							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').output.dataRead",
-								"type": "Expression"
-							},
+							"value": "1",
 							"type": "String"
 						},
 						"errorId": {
 							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').outputactivity('CPY_ONPREM_SQL').output.errors[0].code",
+								"value": "1234",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"errormessage": {
 							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').output.errors[0].message\n",
+								"value": "no error\n",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"loadstatus": {
 							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').output.executionDetails[0].status\n",
+								"value": "fail\n",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -257,7 +254,7 @@
 			},
 			"tableName": {
 				"type": "string",
-				"defaultValue": "copylog"
+				"defaultValue": "loadstatus"
 			}
 		},
 		"annotations": []
