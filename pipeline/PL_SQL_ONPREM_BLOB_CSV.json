@@ -123,10 +123,7 @@
 				"outputs": [
 					{
 						"referenceName": "DS_BLOB_CSV",
-						"type": "DatasetReference",
-						"parameters": {
-							"schemaname": "dbo"
-						}
+						"type": "DatasetReference"
 					}
 				]
 			},
@@ -170,7 +167,7 @@
 						},
 						"tablename": {
 							"value": {
-								"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.TableName)\n",
+								"value": "@concat(pipeline().parameters.tablename)\n",
 								"type": "Expression"
 							},
 							"type": "String"
