@@ -90,8 +90,7 @@
 									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "Errorid",
-									"type": "String",
+									"name": "errorid",
 									"physicalType": "String"
 								}
 							},
@@ -154,10 +153,7 @@
 					"storedProcedureName": "[audit].[loadstatus]",
 					"storedProcedureParameters": {
 						"dataread": {
-							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').output.dataread",
-								"type": "Expression"
-							},
+							"value": "",
 							"type": "String"
 						},
 						"errorid": {
@@ -169,15 +165,12 @@
 							"type": "String"
 						},
 						"loadstatus": {
-							"value": {
-								"value": "@activity('CPY_ONPREM_SQL').output.executionDetails[0].status",
-								"type": "Expression"
-							},
+							"value": "",
 							"type": "String"
 						},
 						"tablename": {
 							"value": {
-								"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
+								"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.TableName)\n",
 								"type": "Expression"
 							},
 							"type": "String"
