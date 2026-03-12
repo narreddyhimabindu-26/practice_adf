@@ -5,6 +5,12 @@
 			"referenceName": "LS_BLOB_CSV",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"schemaname": {
+				"type": "string",
+				"defaultValue": "dbo"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
