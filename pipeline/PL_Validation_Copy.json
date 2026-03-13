@@ -1,0 +1,23 @@
+{
+	"name": "PL_Validation_Copy",
+	"properties": {
+		"activities": [
+			{
+				"name": "file exists or not",
+				"type": "Validation",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "csv",
+						"type": "DatasetReference"
+					},
+					"timeout": "0.12:00:00",
+					"sleep": 10,
+					"childItems": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}
