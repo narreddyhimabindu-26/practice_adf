@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfdevecommerce"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
 		"LS_ADLS_PARQ_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PARQ'"
@@ -47,13 +51,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_CPYLOG_ONPREM_SQL_SP'"
 		},
-		"LS_SP_SQL_ONPREM_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_SP_SQL_ONPREM'"
-		},
-		"LS_SQL_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_SQL'"
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net/"
 		},
 		"LS_ADLS_PARQ_properties_typeProperties_url": {
 			"type": "string",
@@ -102,36 +102,29 @@
 		"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
-		},
-		"LS_SP_SQL_ONPREM_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "LAPTOP-ML3E02N5"
-		},
-		"LS_SP_SQL_ONPREM_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "master"
-		},
-		"LS_SP_SQL_ONPREM_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
-		},
-		"LS_SQL_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "LAPTOP-ML3E02N5"
-		},
-		"LS_SQL_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "master"
-		},
-		"LS_SQL_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_ADLS_PARQ')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -467,6 +460,43 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/csv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "data",
+						"fileSystem": "inputdata"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "SIC_Code",
+						"type": "String"
+					},
+					{
+						"name": "Description",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_CPYLOG_ONPREM_SQL_SP')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -483,62 +513,6 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('LS_CPYLOG_ONPREM_SQL_SP_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "SelfhostedintegrationRuntime1",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/SelfhostedintegrationRuntime1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_SP_SQL_ONPREM')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"server": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_server')]",
-					"database": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_database')]",
-					"encrypt": "mandatory",
-					"trustServerCertificate": true,
-					"authenticationType": "Windows",
-					"userName": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('LS_SP_SQL_ONPREM_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "SelfhostedintegrationRuntime1",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/SelfhostedintegrationRuntime1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_SQL')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"server": "[parameters('LS_SQL_properties_typeProperties_server')]",
-					"database": "[parameters('LS_SQL_properties_typeProperties_database')]",
-					"encrypt": "mandatory",
-					"trustServerCertificate": true,
-					"authenticationType": "Windows",
-					"userName": "[parameters('LS_SQL_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('LS_SQL_password')]"
 					}
 				},
 				"connectVia": {

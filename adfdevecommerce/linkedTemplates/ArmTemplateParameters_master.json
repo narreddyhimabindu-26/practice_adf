@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "adfdevecommerce"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
 		"LS_ADLS_PARQ_accountKey": {
 			"value": ""
 		},
@@ -49,6 +52,9 @@
 		},
 		"SqlServer1_password": {
 			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://devadlsecommerce.dfs.core.windows.net/"
 		},
 		"LS_ADLS_PARQ_properties_typeProperties_url": {
 			"value": "https://devadlsecommerce.dfs.core.windows.net"

@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfdevecommerce"
 		},
+		"LS_SP_SQL_ONPREM_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SP_SQL_ONPREM'"
+		},
+		"LS_SQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL'"
+		},
 		"LS_SQL_CPY_DATA_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQL_CPY_DATA'"
@@ -18,6 +26,30 @@
 		"SqlServer1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SqlServer1'"
+		},
+		"LS_SP_SQL_ONPREM_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5"
+		},
+		"LS_SP_SQL_ONPREM_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SP_SQL_ONPREM_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "LAPTOP-ML3E02N5\\venkat"
 		},
 		"LS_SQL_CPY_DATA_properties_typeProperties_server": {
 			"type": "string",
@@ -60,6 +92,58 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SP_SQL_ONPREM')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "Windows",
+					"userName": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SP_SQL_ONPREM_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "SelfhostedintegrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SQL')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SQL_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SQL_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "Windows",
+					"userName": "[parameters('LS_SQL_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SQL_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "SelfhostedintegrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_SQL_CPY_DATA')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -524,6 +608,36 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/PL_Validation_Copy')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "file exists or not",
+						"type": "Validation",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "csv",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"timeout": "0.12:00:00",
+							"sleep": 10,
+							"childItems": true
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -576,7 +690,9 @@
 					"table": "DatabaseLog"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_SQL')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_ONPREM')]",
@@ -595,7 +711,9 @@
 					"table": "copylog"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_SQL')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/PL_SQL_ADLS')]",
@@ -938,7 +1056,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_SQL_ONPREM')]"
+				"[concat(variables('factoryId'), '/datasets/DS_SQL_ONPREM')]",
+				"[concat(variables('factoryId'), '/linkedServices/LS_SP_SQL_ONPREM')]"
 			]
 		}
 	]

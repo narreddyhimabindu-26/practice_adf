@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfdevecommerce"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
 		"LS_ADLS_PARQ_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PARQ'"
@@ -66,6 +70,10 @@
 		"SqlServer1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SqlServer1'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://devadlsecommerce.dfs.core.windows.net/"
 		},
 		"LS_ADLS_PARQ_properties_typeProperties_url": {
 			"type": "string",
@@ -202,6 +210,9 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
 					"LS_ADLS_PARQ_accountKey": {
 						"value": "[parameters('LS_ADLS_PARQ_accountKey')]"
 					},
@@ -232,11 +243,8 @@
 					"LS_CPYLOG_ONPREM_SQL_SP_password": {
 						"value": "[parameters('LS_CPYLOG_ONPREM_SQL_SP_password')]"
 					},
-					"LS_SP_SQL_ONPREM_password": {
-						"value": "[parameters('LS_SP_SQL_ONPREM_password')]"
-					},
-					"LS_SQL_password": {
-						"value": "[parameters('LS_SQL_password')]"
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
 					"LS_ADLS_PARQ_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLS_PARQ_properties_typeProperties_url')]"
@@ -273,24 +281,6 @@
 					},
 					"LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_userName": {
 						"value": "[parameters('LS_CPYLOG_ONPREM_SQL_SP_properties_typeProperties_userName')]"
-					},
-					"LS_SP_SQL_ONPREM_properties_typeProperties_server": {
-						"value": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_server')]"
-					},
-					"LS_SP_SQL_ONPREM_properties_typeProperties_database": {
-						"value": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_database')]"
-					},
-					"LS_SP_SQL_ONPREM_properties_typeProperties_userName": {
-						"value": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_userName')]"
-					},
-					"LS_SQL_properties_typeProperties_server": {
-						"value": "[parameters('LS_SQL_properties_typeProperties_server')]"
-					},
-					"LS_SQL_properties_typeProperties_database": {
-						"value": "[parameters('LS_SQL_properties_typeProperties_database')]"
-					},
-					"LS_SQL_properties_typeProperties_userName": {
-						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -310,6 +300,12 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"LS_SP_SQL_ONPREM_password": {
+						"value": "[parameters('LS_SP_SQL_ONPREM_password')]"
+					},
+					"LS_SQL_password": {
+						"value": "[parameters('LS_SQL_password')]"
+					},
 					"LS_SQL_CPY_DATA_password": {
 						"value": "[parameters('LS_SQL_CPY_DATA_password')]"
 					},
@@ -318,6 +314,24 @@
 					},
 					"SqlServer1_password": {
 						"value": "[parameters('SqlServer1_password')]"
+					},
+					"LS_SP_SQL_ONPREM_properties_typeProperties_server": {
+						"value": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_server')]"
+					},
+					"LS_SP_SQL_ONPREM_properties_typeProperties_database": {
+						"value": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_database')]"
+					},
+					"LS_SP_SQL_ONPREM_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SP_SQL_ONPREM_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_server')]"
+					},
+					"LS_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_database')]"
+					},
+					"LS_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
 					},
 					"LS_SQL_CPY_DATA_properties_typeProperties_server": {
 						"value": "[parameters('LS_SQL_CPY_DATA_properties_typeProperties_server')]"
